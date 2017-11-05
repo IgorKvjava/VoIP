@@ -9,7 +9,7 @@
         <module name="VoIP" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="VoIP" target="1.8" />
     </bytecodeTargetLevel>
   </component>

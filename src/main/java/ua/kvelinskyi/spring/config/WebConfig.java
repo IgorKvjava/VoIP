@@ -15,8 +15,7 @@ import java.util.Locale;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"ua.kvelinskyi.spring.config",
-        "ua.kvelinskyi.spring.controllers"})
+@ComponentScan({"ua.kvelinskyi"})
 
 public class WebConfig extends WebMvcConfigurerAdapter {
 

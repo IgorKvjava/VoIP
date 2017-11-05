@@ -6,7 +6,7 @@
 <body>
 <div class="blockIndex">
     <h2>LOGIN</h2>
-    <form action="mainUserPage" method="POST" >
+    <form action="mainPageUser" method="POST" >
         <label>Your Login:
             <br>
         </label>
@@ -23,9 +23,9 @@
     </form>
     <%--<button onclick="location.href = 'registration.jsp'">Sign Up</button>--%>
 
-    <form action="registrationPage" method="GET">
+    <%--<form action="registrationPage" method="GET">
         <input type="submit" name="ok" value="Sign Up"/>
-    </form>
+    </form>--%>
 </div>
 </body>
 </html>

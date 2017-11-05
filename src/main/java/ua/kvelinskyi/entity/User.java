@@ -12,7 +12,7 @@ import java.util.List;
 @StaticMetamodel(User.class)
 
 @Component
-@Entity
+@Entity(name = "springUsers")
 @Table(name = "users", schema = "phonebase")
 /*@Cacheable
 // do cache on user table
