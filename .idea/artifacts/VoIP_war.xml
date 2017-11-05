@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="VoIP:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="VoIP.war">
+      <element id="artifact" artifact-name="VoIP:war exploded" />
+    </root>
+  </artifact>
+</component>
