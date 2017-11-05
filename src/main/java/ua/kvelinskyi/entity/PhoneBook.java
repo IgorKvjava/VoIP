@@ -1,4 +1,4 @@
-package ua.kvelinskyi.entitys;
+package ua.kvelinskyi.entity;
 
 import javax.annotation.Generated;
 import javax.persistence.*;

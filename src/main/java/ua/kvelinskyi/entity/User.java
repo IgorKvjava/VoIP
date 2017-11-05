@@ -1,4 +1,6 @@
-package ua.kvelinskyi.entitys;
+package ua.kvelinskyi.entity;
+
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import java.util.List;
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(User.class)
 
+@Component
 @Entity
 @Table(name = "users", schema = "phonebase")
 /*@Cacheable

@@ -13,8 +13,10 @@
         <hibernate-version>5.2.11.Final</hibernate-version>
         <spring-framework-version>5.0.1.RELEASE</spring-framework-version>
         <slf4j2-version>2.9.1</slf4j2-version>
+        <slf4g-version>1.7.25</slf4g-version>
         <jackson-version>2.9.2</jackson-version>
-        <spring-data>2.0.1.RELEASE</spring-data>
+        <spring-data>1.11.4.RELEASE</spring-data>
+        <!--1.11.4.RELEASE   2.0.1.RELEASE-->
     </properties>
 
     <dependencies>
@@ -184,6 +186,25 @@
         </dependency>
         <!--slf4j2 end-->
 
+        <!-- slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4g-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4g-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <version>${slf4g-version}</version>
+        </dependency>
+        <!--end slf4j -->
+
         <!-- jackson-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -235,6 +256,11 @@
                     <server>TomcatServer</server>
                     <path>/VoIPWebApp</path>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
             </plugin>
         </plugins>
         <finalName>VoIPWebApp</finalName>
