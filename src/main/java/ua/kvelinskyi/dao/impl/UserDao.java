@@ -29,7 +29,6 @@ public class UserDao  {
         criteriaQuery.where(predicate);
         TypedQuery<User> typedQuery =
                 entityManager.createQuery(criteriaQuery);
-        entityManager.getTransaction().commit();
         List<User> listUser = typedQuery.getResultList();
         if (listUser.isEmpty()){
             return null;
