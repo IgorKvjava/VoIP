@@ -24,6 +24,7 @@
             <th>${user.role} </th>
         </tr>
     </table>
+    <br>
     <form action="/" method="GET">
         <input type="submit" name="ok" value="Exit"/>
     </form>

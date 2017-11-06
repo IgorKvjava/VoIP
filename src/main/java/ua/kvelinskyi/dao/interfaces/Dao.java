@@ -3,7 +3,7 @@ package ua.kvelinskyi.dao.interfaces;
 import java.io.Serializable;
 import java.util.List;
 
-public interface Dao <T, PK extends Serializable> {
+public interface Dao <T, PK > {
 
     public void update(T transientObject);
 
