@@ -17,7 +17,7 @@
             <th><s:message code="userRole"/></th>
         </tr>
         <tr>
-            <th>${id}  </th>
+            <th>${user.id}  </th>
             <th>${user.login}   </th>
             <th><input type="text" name="password" value="${user.password}"/>   </th>
             <th><input type="text" name="user_name" value="${user.userName}"/>   </th>

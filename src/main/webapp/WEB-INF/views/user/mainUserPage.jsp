@@ -7,7 +7,7 @@
 <div class="block">
     <p>
     <form action="/" method="GET">
-        <%--<input type="hidden" name="param" value="">--%>
+        <input type="hidden" name="param" value="">
         <input type="submit" name="ok" value="Exit"/>
     </form>
     </p>

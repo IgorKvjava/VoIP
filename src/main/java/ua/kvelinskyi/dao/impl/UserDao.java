@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.transaction.annotation.Transactional;
 import ua.kvelinskyi.dao.interfaces.Dao;
 import ua.kvelinskyi.entity.User;
 import ua.kvelinskyi.entity.User_;
@@ -17,10 +18,11 @@ import ua.kvelinskyi.entity.User_;
 import java.util.List;
 
 @Component
+@Transactional
 public class UserDao  {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    EntityManager entityManager;
 
     public User isExistUser(String login, String pass) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -39,36 +41,11 @@ public class UserDao  {
             return listUser.get(0);
     }
 
-
-    public void update(User transientObject) {
-
-    }
-
-
-    public void delete(User persistentObject) {
-
-    }
-
-
-
-    public List<User> getAll() {
-       // List<User> users = entityManager.createQuery("select from ", User.class).getResultList();
-        return null;
-    }
-
-
     public Integer create(User newUser) {
         entityManager.persist(newUser);
-        String a= "";
         User user =isExistUser(newUser.getLogin(), newUser.getPassword());
         return user.getId();
     }
-
-
-    public User read(Integer id) {
-        return null;
-    }
-
 
     public boolean isExistUserLogin(String login) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -85,4 +62,23 @@ public class UserDao  {
         }else
             return true;
     }
+
+    public void update(User transientObject) {
+
+    }
+
+    public void delete(User persistentObject) {
+
+    }
+
+    public List<User> getAll() {
+        // List<User> users = entityManager.createQuery("select from ", User.class).getResultList();
+        return null;
+    }
+
+
+    public User read(Integer id) {
+        return null;
+    }
+
 }
