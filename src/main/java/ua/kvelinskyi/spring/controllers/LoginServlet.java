@@ -13,6 +13,7 @@ import ua.kvelinskyi.dao.impl.UserDao;
 import ua.kvelinskyi.entity.User;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @SessionAttributes(types = User.class)
@@ -27,15 +28,22 @@ public class LoginServlet {
     @Autowired
     UserDao userDao;
 
-    @RequestMapping(value = "/mainPageUser", method = RequestMethod.POST)
+    @RequestMapping(value = "mainPageUser", method = RequestMethod.POST)
     public ModelAndView doMainPageUser(@RequestParam("login") String login,
                                        @RequestParam("password") String password
                                         ) {
         ModelAndView mod = new ModelAndView();
+        userDao.LOGGER.info("LoginServlet , RequestMapping - mainPageUser");
         User user= userDao.isExistUser(login, password);
         if (user!=null){
             mod.addObject("user", user);
-            mod.setViewName("/user/mainUserPage");
+            if(userDao.isExistAdmin("admin")){
+                List<User> listAllUsers = userDao.getAll();
+                mod.addObject("listAllUsers", listAllUsers);
+                mod.setViewName("/admin/usersEditData");
+            }else {
+                mod.setViewName("/user/mainUserPage");
+            }
         }else {
             mod.setViewName("index");
         }
@@ -81,4 +89,31 @@ public class LoginServlet {
     protected void initValidator(WebDataBinder binder) {
         // bind validator to controller
         binder.setValidator(this.formValidator); }
+
+
+
+    @RequestMapping(value = "userUpdateData", method = RequestMethod.POST)
+    public ModelAndView doUserEditData(@RequestParam("password") String password,
+                                       @RequestParam("userName") String userName,
+            @Validated
+                    User user)
+    {
+        ModelAndView mod = new ModelAndView();
+        user.setPassword(password);
+        user.setUserName(userName);
+        user = userDao.update(user);
+        mod.addObject("user", user);
+        mod.setViewName("/user/userEditDataPage");
+        return mod;
+    }
+    @RequestMapping(value = "editUserDataPage", method = RequestMethod.POST)
+    public ModelAndView doUserEditDataPage(
+                                       @Validated
+                                               User user)
+    {
+        ModelAndView mod = new ModelAndView();
+        mod.addObject("user", user);
+        mod.setViewName("/user/userEditDataPage");
+        return mod;
+    }
 }
