@@ -15,7 +15,7 @@
         <slf4j2-version>2.9.1</slf4j2-version>
         <slf4g-version>1.7.25</slf4g-version>
         <jackson-version>2.9.2</jackson-version>
-        <spring-data>1.11.4.RELEASE</spring-data>
+        <spring-data>2.0.1.RELEASE</spring-data>
         <!--1.11.4.RELEASE   2.0.1.RELEASE-->
     </properties>
 

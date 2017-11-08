@@ -37,7 +37,7 @@ public class LoginServlet {
         User user= userDao.isExistUser(login, password);
         if (user!=null){
             mod.addObject("user", user);
-            if(userDao.isExistAdmin("admin")){
+            if("admin".equals(user.getRole())){
                 List<User> listAllUsers = userDao.getAll();
                 mod.addObject("listAllUsers", listAllUsers);
                 mod.setViewName("/admin/usersEditData");

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -17,7 +17,8 @@ import java.util.Locale;
 @EnableWebMvc
 @ComponentScan({"ua.kvelinskyi"})
 
-public class WebConfig extends WebMvcConfigurerAdapter {
+//TODO implements WebMvcConfigurer for spring-framework-version 5.0.1.RELEASE
+public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {

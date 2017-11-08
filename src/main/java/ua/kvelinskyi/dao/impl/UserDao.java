@@ -77,21 +77,21 @@ public class UserDao {
     }
 
     public List<User> getAll() {
-       //List<User> users = entityManager.createQuery("SELECT '*' FROM 'Users'", User.class).getResultList();
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+       List<User> resultList = entityManager.createQuery("FROM springUser", User.class).getResultList();
+        /*CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery =criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
         TypedQuery<User> typedQuery =
                 entityManager.createQuery(criteriaQuery);
-        List<User> resultList =   typedQuery.getResultList();
+        List<User> resultList =   typedQuery.getResultList();*/
         return resultList;
     }
 
     public User read(Integer id) {
         return null;
     }
-
-    public boolean isExistAdmin(String role) {
+//TODO delete isExistAdmin
+    /*public boolean isExistAdmin(String role) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
@@ -105,5 +105,5 @@ public class UserDao {
             return false;
         } else
             return true;
-    }
+    }*/
 }
