@@ -1,19 +1,13 @@
 package ua.kvelinskyi.spring.config;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import ua.kvelinskyi.dao.impl.UserDao;
 
-@EnableJpaRepositories
 @Configuration
+@EnableJpaRepositories(basePackages = {"ua.kvelinskyi.dao"})
+@EntityScan(basePackages = {"ua.kvelinskyi.entity"})
 @EnableTransactionManagement
-public class DataConfig {
-
-    @Bean
-    public UserDao getUserDao() {
-        return new UserDao();
-    }
-
+public class RepositoryConfiguration {
 }

@@ -14,7 +14,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.springframework.transaction.annotation.Transactional;
 import ua.kvelinskyi.entity.User;
-import ua.kvelinskyi.entity.User_;
+
 import java.util.List;
 
 @Component
@@ -27,7 +27,7 @@ public class UserDao {
 
     public User isExistUser(String login, String pass) {
         LOGGER.info("UserDao, isExistUser has started !");
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+       /* CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
         Predicate predicate1 = criteriaBuilder.equal(root.get(User_.login), login);
@@ -39,8 +39,8 @@ public class UserDao {
         List<User> listUser = typedQuery.getResultList();
         if (listUser.isEmpty()) {
             return null;
-        } else
-            return listUser.get(0);
+        } else*/
+            return null;
     }
 
 
@@ -51,7 +51,7 @@ public class UserDao {
     }
 
     public boolean isExistUserLogin(String login) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+       /* CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
         Predicate predicate1 = criteriaBuilder.equal(root.get(User_.login), login);
@@ -62,7 +62,7 @@ public class UserDao {
         List<User> listUser = typedQuery.getResultList();
         if (listUser.isEmpty()) {
             return false;
-        } else
+        } else*/
             return true;
     }
 
@@ -77,14 +77,14 @@ public class UserDao {
     }
 
     public List<User> getAll() {
-       List<User> resultList = entityManager.createQuery("FROM springUser", User.class).getResultList();
+      // List<User> resultList = entityManager.createQuery("FROM springUser", User.class).getResultList();
         /*CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery =criteriaBuilder.createQuery(User.class);
         Root<User> root = criteriaQuery.from(User.class);
         TypedQuery<User> typedQuery =
                 entityManager.createQuery(criteriaQuery);
         List<User> resultList =   typedQuery.getResultList();*/
-        return resultList;
+        return null;
     }
 
     public User read(Integer id) {

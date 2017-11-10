@@ -1,22 +1,11 @@
 package ua.kvelinskyi.entity;
 
-import org.springframework.stereotype.Component;
-
-import javax.annotation.Generated;
 import javax.persistence.*;
-import javax.persistence.metamodel.StaticMetamodel;
 import java.util.ArrayList;
 import java.util.List;
 
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(User.class)
-
-@Component
 @Entity(name = "springUser")
 @Table(name = "users", schema = "phonebase")
-/*@Cacheable
-// do cache on user table
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)*/
 public class User {
     private int id;
     private String login;

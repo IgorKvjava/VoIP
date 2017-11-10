@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ua.kvelinskyi.dao.impl.UserDao;
+import ua.kvelinskyi.dao.UserRepository;
 import ua.kvelinskyi.entity.User;
 
 import javax.servlet.http.HttpSession;
@@ -26,19 +26,20 @@ public class LoginServlet {
     FormValidator formValidator;
 
     @Autowired
-    UserDao userDao;
+    UserRepository userRepository;
+
 
     @RequestMapping(value = "mainPageUser", method = RequestMethod.POST)
     public ModelAndView doMainPageUser(@RequestParam("login") String login,
                                        @RequestParam("password") String password
                                         ) {
         ModelAndView mod = new ModelAndView();
-        userDao.LOGGER.info("LoginServlet , RequestMapping - mainPageUser");
-        User user= userDao.isExistUser(login, password);
+        //User user= userDao.isExistUser(login, password);
+        User user = userRepository.findByLoginAndPassword(login,password);
         if (user!=null){
             mod.addObject("user", user);
             if("admin".equals(user.getRole())){
-                List<User> listAllUsers = userDao.getAll();
+                List<User> listAllUsers = userRepository.findAll();
                 mod.addObject("listAllUsers", listAllUsers);
                 mod.setViewName("/admin/usersEditData");
             }else {
@@ -73,12 +74,12 @@ public class LoginServlet {
             mod.setViewName("registration");
         } else {
 
-            if (userDao.isExistUserLogin(user.getLogin())) {
+            if (userRepository.findByLogin(user.getLogin())) {
                 user.setLogin("");
                 mod.setViewName("registration");
             } else {
                 user.setRole("user");
-                userDao.create(user);
+                userRepository.save(user);
                 mod.addObject("user", user);
                 mod.setViewName("/user/userEditDataPage");
             }
@@ -101,7 +102,7 @@ public class LoginServlet {
         ModelAndView mod = new ModelAndView();
         user.setPassword(password);
         user.setUserName(userName);
-        user = userDao.update(user);
+        user = userRepository.save(user);
         mod.addObject("user", user);
         mod.setViewName("/user/userEditDataPage");
         return mod;

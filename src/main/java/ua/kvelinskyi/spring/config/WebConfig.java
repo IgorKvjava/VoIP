@@ -4,12 +4,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.validation.MessageCodesResolver;
+import org.springframework.validation.Validator;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.util.List;
 import java.util.Locale;
 
 @Configuration
@@ -17,7 +24,7 @@ import java.util.Locale;
 @ComponentScan({"ua.kvelinskyi"})
 
 //TODO implements WebMvcConfigurer for spring-framework-version 5.0.1.RELEASE
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig  {
 
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
@@ -43,10 +50,7 @@ public class WebConfig implements WebMvcConfigurer {
         return interceptor;
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(localeInterceptor());
-    }
+
 
     @Bean
     public InternalResourceViewResolver viewResolver() {

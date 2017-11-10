@@ -1,17 +1,9 @@
 package ua.kvelinskyi.entity;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
-import javax.persistence.metamodel.StaticMetamodel;
-
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(PhoneBook.class)
 
 @Entity
 @Table(name = "phone_books", schema = "phonebase")
-/*@Cacheable
-// do cache on user table
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)*/
 public class PhoneBook {
     private int id;
     private int idUser;
